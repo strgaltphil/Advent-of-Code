@@ -12,7 +12,7 @@ class Board:
     def get_board(self):
         return [b.number for b in self.board]
 
-    def try_check_field(self, number: int):
+    def check_field(self, number: int):
         for i in range(len(self.board)):
             if self.board[i].number == number:
                 self.board[i].check()
@@ -36,7 +36,7 @@ class Board:
 def get_score():
     for d in drawing:
         for board in boards:
-            board.try_check_field(d)
+            board.check_field(d)
             if(board.check_bingo() and (get_num_of_won_boards() == len(boards) )):
                 return sum(board.get_unchecked_fields()) * d
 
