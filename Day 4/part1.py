@@ -57,7 +57,7 @@ boards = []
 for i in range(len(raw_boards) // 5):
     tmp_board = []
     for j in range(board_dimension):
-        # One single Field includes first the field vaule, second if it got checked already
+        # One single Field includes first the field value, second if it got checked already
         tmp_board.extend([Field(int(rb), False) for rb in raw_boards[i * board_dimension + j].split()])
 
     boards.append(Board(tmp_board))
