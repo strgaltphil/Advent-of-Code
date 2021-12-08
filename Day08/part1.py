@@ -10,4 +10,3 @@ for sd in splitted_data:
             easy_numbers += 1
 
 print(f"Easy numbers: {easy_numbers}")
-
