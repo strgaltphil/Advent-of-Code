@@ -1,3 +1,5 @@
+import functools
+
 with open('input.txt', 'r') as file:
     data = [line for line in file.read().split('\n')]
 
@@ -34,25 +36,15 @@ def completion_score(line):
 
     for s in stack:
         if s == "<":
-            solution.append(">")
+            solution.append(4)
         if s == "(":
-            solution.append(")")
+            solution.append(1)
         if s == "[":
-            solution.append("]")
+            solution.append(2)
         if s == "{":
-            solution.append("}")
+            solution.append(3)
 
-    score = 0
-    for s in solution:
-        if s == ">":
-            score = score * 5 + 4
-        if s == ")":
-            score = score * 5 + 1
-        if s == "]":
-            score = score * 5 + 2
-        if s == "}":
-            score = score * 5 + 3
-    return score
+    return functools.reduce(lambda a, b: a * 5 + b, solution)
 
 incomplete = [d for d in data if not is_corrupted(d)]
 
