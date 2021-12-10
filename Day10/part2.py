@@ -27,16 +27,7 @@ def completion_score(line):
         if l in ["<","(","[","{"]:
             stack.append(l)
         else:
-            if l == ">" and stack[-1] != "<":
-                return True
-            if l == ")" and stack[-1] != "(":
-                return True
-            if l == "]" and stack[-1] != "[":
-                return True
-            if l == "}" and stack[-1] != "{":
-                return True
-            else:
-                stack.pop()
+            stack.pop()
 
     stack = list(reversed(stack))
     solution = []
@@ -65,10 +56,8 @@ def completion_score(line):
 
 incomplete = [d for d in data if not is_corrupted(d)]
 
-scores = []
-
-for i in incomplete:
-    scores.append(completion_score(i))
+scores = [completion_score(i) for i in incomplete]
 
 scores.sort()
+
 print(f"Solution: {scores[len(scores) // 2]}")
